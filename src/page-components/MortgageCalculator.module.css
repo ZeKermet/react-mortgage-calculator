@@ -1,0 +1,341 @@
+.mortgageCalculator {
+    position: absolute;
+    max-width: 80vw;
+    width: 1000px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+}
+
+.resultsColumn,
+.numberInputColumn {
+    --column-padding: 36px;
+    padding: var(--column-padding);
+}
+
+.colTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.colTop h2 {
+    color: var(--slate-900);
+}
+
+.clearAllValue {
+    text-decoration: underline;
+    cursor: pointer;
+    color: var(--slate-700);
+    text-underline-offset: 2px;
+    font-weight: 500;
+}
+
+
+.numberInputColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.mortgageInputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+.mortgageInputs > *:nth-child(1),
+.mortgageInputs > *:nth-child(4) {
+    grid-column: span 2;
+}
+
+.inputLabel {
+    color: var(--slate-700);
+    font-weight: 500;
+    margin-bottom: 12px;
+    font-size: var(--font-size-p-small);
+}
+
+.numberInput > .numberInputContainer {
+    border-radius: 4px;
+    border: 1px solid var(--slate-700);
+    position: relative;
+    display: flex;
+    height: 48px;
+    cursor: pointer;
+}
+.numberInput > .numberInputContainer.focused,
+.numberInput.error > .numberInputContainer.focused {
+    border: 1px solid var(--Lime);
+}
+
+.numberInput > .numberInputContainer,
+.numberInput > .numberInputContainer > input {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--slate-900);
+    transition: 0.25s;
+    cursor: pointer;
+}
+.numberInput > .numberInputContainer > input:focus {
+    outline: none;
+}
+
+input.principal {
+    padding: 12px 16px;
+    border-radius: 0 4px 4px 0;
+    border: none;
+}
+input.term,
+input.interest {
+    padding: 12px 16px;
+    border-radius: 4px 0 0 4px;
+    border: none;
+}
+
+.numberInputContainer > .inputUnit {
+    background: var(--slate-100);
+    height: 100%;
+    border-radius: 0 4px 4px 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    color: var(--slate-700);
+    transition: 0.25s;
+}
+.numberInputContainer.dollar > .inputUnit {
+    border-radius: 4px 0 0 4px;
+}
+.numberInputContainer.focused > .inputUnit,
+.numberInput.error .numberInputContainer.focused > .inputUnit {
+    background-color: var(--Lime);
+}
+
+.errorText {
+    color: var(--Red);
+    font-size: var(--font-size-p-small);
+    margin-top: 4px;
+    cursor: default;
+    display: none;
+}
+
+.numberInput.error .errorText {
+    display: block;
+}
+.numberInput.error .numberInputContainer {
+    border-color: var(--Red);
+}
+.numberInput.error .inputUnit {
+    background-color: var(--Red);
+    color: white;
+}
+
+.selectInputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.selectOption {
+    display: flex;
+    border: 1px solid var(--slate-700);
+    padding: 12px 16px;
+    gap: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    align-items: center;
+    transition: 0.25s;
+}
+.selectOption.active {
+    border-color: var(--Lime);
+    background-color: var(--Lime-transparent);
+}
+
+.selectOption p {
+    color: var(--slate-900);
+    font-weight: 700;
+}
+
+.selectCircle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid var(--slate-700);
+    position: relative;
+    transition: 0.25s;
+}
+.selectOption.active .selectCircle {
+    border-color: var(--Lime);
+}
+
+.selectCircle::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--slate-700);
+    border-radius: 50%;
+    opacity: 0;
+    transition: 0.25s;
+}
+.selectOption.active .selectCircle::after {
+    background-color: var(--Lime);
+    opacity: 1;
+}
+
+.calculateBtn {
+    border-radius: 50px;
+    border: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--Lime);
+    cursor: pointer;
+    max-width: 300px;
+    color: var(--slate-900);
+    font-weight: 700;
+}
+
+
+
+
+
+.resultsColumn {
+    background: var(--slate-900);
+    border-radius: 0 16px 16px 60px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.resultsColumn h2 {
+    color: white;
+}
+
+.resultsColumn .emptyResultsContainer h2 {
+    margin-bottom: 16px;
+}
+
+.resultsColumn .emptyResultsContainer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: calc(100% - var(--column-padding) * 2); 
+}
+
+.resultsColumn p {
+    color: var(--slate-400);
+}
+
+.resultsColumn > p,
+.resultsColumn .emptyResultsContainer > p {
+    line-height: 1.5;
+}
+
+.resultsContainer {
+    background: var(--Lime);
+    border-radius: 8px;
+    padding-top: 4px;
+    padding-bottom: -4px;
+    margin-top: 20px;
+}
+.resultsContainer > div {
+    background: var(--slate-1000);
+    border-radius: 8px;
+    padding: 32px;
+    width: calc(100% + 2px);
+    margin-left: -1px;
+    margin-bottom: -1px;
+    height: calc(100% + 4px);
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.resultsContainer .result p {
+    margin-bottom: 8px;
+}
+.resultsContainer .result h1 {
+    color: var(--Lime);
+    font-size: 48px;
+}
+
+
+@media screen and (max-width: 989px) {
+    .colTop {
+        flex-direction: column;
+        justify-content: left;
+        align-items: normal;
+        gap: 8px;
+    }
+}
+
+@media screen and (max-width: 949px) {
+    .mortgageCalculator {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transform: none;
+        top: 0;
+        left: 0;
+        margin: 36px auto;
+        margin-top: 36px;
+        width: 600px;
+        border-bottom-left-radius: 60px;
+    }
+
+    .resultsColumn .emptyResultsContainer {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        text-align: center;
+        margin: 0 auto;
+        width: calc(100% - var(--column-padding) * 2); 
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .mortgageCalculator {
+        width: 100%;
+        max-width: none;
+        border-radius: 0;
+        margin: 0 auto;
+    }
+
+    .resultsColumn {
+        border-radius: 0;
+    }
+}
+
+@media screen and (max-width: 423px) {
+    .resultsColumn,
+    .numberInputColumn {
+        --column-padding: 20px;
+        padding: 36px var(--column-padding);
+    }
+}
+
+@media screen and (max-width: 371px) {
+    .resultsContainer .result h1 {
+        font-size: 32px;
+    }
+
+    .resultsColumn p {
+        font-size: var(--font-size-p-small);
+    }
+}

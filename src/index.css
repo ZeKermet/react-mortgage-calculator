@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+:root {
+    --Lime: hsl(61, 70%, 52%);
+    --Lime-transparent: hsla(61, 70%, 52%, 0.2);
+    --Red: hsl(4, 69%, 50%);
+
+    /* White: hsl(0, 0%, 100%) */;
+    --slate-100: hsl(202, 86%, 94%);
+    --slate-300: hsl(203, 41%, 72%);
+    --slate-400: hsl(201, 25%, 67%);
+    --slate-500: hsl(200, 26%, 54%);
+    --slate-700: hsl(200, 24%, 40%);
+    --slate-900: hsl(202, 55%, 16%);
+    --slate-1000: hsl(203, 62%, 12%);
+
+    --font-size-p-small: 15px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+p,
+button {
+    font-weight: 500;
+}
+
+body {
+    background: var(--slate-100);
+    position: relative;
+    min-height: 100vh;
+}
+
+button {
+    cursor: pointer;
+}
+
+.p-small {
+    font-size: var(--font-size-p-small);
+    color: var(--slate-700);
+}
